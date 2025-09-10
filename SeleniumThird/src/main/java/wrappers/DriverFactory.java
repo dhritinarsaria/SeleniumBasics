@@ -39,7 +39,16 @@ public class DriverFactory {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWaitSec));
         tlDriver.set(driver);
 
-	
-}
-}
-
+	}
+        public static WebDriver getDriver() {
+            return tlDriver.get();
+        }
+     
+        public static void quitDriver() {
+            WebDriver driver = tlDriver.get();
+            if (driver != null) {
+                driver.quit();
+                tlDriver.remove();
+            }
+        }
+    }
